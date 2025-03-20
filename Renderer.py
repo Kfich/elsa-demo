@@ -1,4 +1,6 @@
 import threading
+from TextEditorClient import TextEditorClient
+from TextBuffer import TextBuffer
 
 # Renderer.py
 # This module defines a Renderer class for a text editor that handles the

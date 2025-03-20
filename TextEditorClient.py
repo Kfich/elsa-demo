@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import socket
 import threading
-import time
-import TextEditor
 
 ### TextEditorClient.py ###
 # This module defines a TextEditorClient class that connects to a socket server
@@ -37,7 +35,7 @@ class TextEditorClient:
             self.listen_thread.start()
             
             return True
-        except Exception as e:
+        except (socket.error, socket.gaierror) as e:
             print(f"Connection error: {e}")
             return False
 
@@ -56,7 +54,7 @@ class TextEditorClient:
         try:
             self.socket.sendall(command.encode('utf-8'))
             return True
-        except Exception as e:
+        except (socket.error, socket.timeout) as e:
             print(f"Send error: {e}")
             self.connected = False
             return False
@@ -78,7 +76,7 @@ class TextEditorClient:
                     line, buffer = buffer.split('\n', 1)
                     self.process_event(line)
                     
-            except Exception as e:
+            except (socket.error, socket.timeout) as e:
                 print(f"Receive error: {e}")
                 self.connected = False
                 break
@@ -105,37 +103,3 @@ class TextEditorClient:
 
     def clear_screen(self):
         return self.send_command("clear")
-
-def main():
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='Text Editor using Canvas Socket API')
-    parser.add_argument('--host', default='localhost', help='Canvas API host')
-    parser.add_argument('--port', type=int, default=5005, help='Canvas API port')
-    
-    args = parser.parse_args()
-    
-    print(f"Starting Text Editor - connecting to {args.host}:{args.port}")
-    print("Keyboard shortcuts:")
-    print("  Ctrl+C - Copy")
-    print("  Ctrl+X - Cut")
-    print("  Ctrl+V - Paste")
-    print("  Ctrl+A - Select All")
-    print("  Ctrl+N - New File")
-    print("  Ctrl+L - Toggle Line Numbers")
-    print("  Ctrl+H - Toggle Command Legend")
-    
-    editor = TextEditor(args.host, args.port)
-    if editor.start():
-        try:
-            while True:
-                time.sleep(0.1)
-        except KeyboardInterrupt:
-            print("\nExiting...")
-            editor.client.disconnect()
-    else:
-        print("Failed to start editor. Is the socket_canvas.py running?")
-
-
-if __name__ == "__main__":
-    main()
