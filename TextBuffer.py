@@ -1,3 +1,10 @@
+
+### TextBuffer.py ###
+# This module defines a TextBuffer class that manages the text content,
+# cursor position, and text selection for a text editor. It provides methods
+# for inserting, deleting, and moving text, as well as handling cursor
+# visibility and text selection.
+
 class TextBuffer:
     def __init__(self):
         self.lines = [""]

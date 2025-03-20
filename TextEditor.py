@@ -3,6 +3,11 @@ from TextBuffer import TextBuffer
 from Renderer import Renderer
 from TextEditorClient import TextEditorClient
 
+### TextEditor ###
+# This class handles user input, text manipulation, and rendering of the text
+# It communicates with a client to draw on a canvas and uses a text buffer
+# to manage the text content and cursor position.
+
 class TextEditor:
     def __init__(self, host='localhost', port=5005):
         self.client = TextEditorClient(host, port)

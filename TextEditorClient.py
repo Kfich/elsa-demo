@@ -4,6 +4,12 @@ import threading
 import time
 import TextEditor
 
+### TextEditorClient.py ###
+# This module defines a TextEditorClient class that connects to a socket server
+# for a text editor application. It handles sending commands to the server and
+# receiving events from it. The client can draw on a canvas, handle keyboard
+# events, and manage a text buffer. 
+
 class TextEditorClient:
     def __init__(self, host='localhost', port=5005):
         self.host = host

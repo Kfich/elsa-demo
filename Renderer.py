@@ -1,3 +1,11 @@
+import threading
+
+# Renderer.py
+# This module defines a Renderer class for a text editor that handles the
+# rendering of text, line numbers, cursor, and a command legend on a canvas.
+# It uses a client interface to draw on the screen and a text buffer to manage
+# the text content and cursor position.
+
 class Renderer:
     def __init__(self, client, text_buffer):
         self.client = client
