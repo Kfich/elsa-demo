@@ -2,7 +2,6 @@
 import socket
 import threading
 import time
-import json
 import argparse
 
 class WhiteboardClient:

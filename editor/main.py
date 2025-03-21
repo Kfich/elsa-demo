@@ -1,8 +1,6 @@
 import time
-from TextEditor import TextEditor
 import argparse
-
-
+from TextEditor import TextEditor
 
 def main():    
     parser = argparse.ArgumentParser(description='Text Editor using Canvas Socket API')

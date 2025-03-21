@@ -144,7 +144,7 @@ class ModernChessClient:
             self.listen_thread.start()
             
             return True
-        except Exception as e:
+        except (socket.error, socket.gaierror) as e:
             print(f"Canvas connection error: {e}")
             return False
     
