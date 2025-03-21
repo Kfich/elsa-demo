@@ -26,7 +26,7 @@ A feature-rich text editor built with Python using the provided socket canvas AP
 
 2. Then, in a separate terminal, run the text editor:
    ```
-   python text_editor.py
+   python main.py
    ```
 
 ## Keyboard Shortcuts
@@ -53,8 +53,9 @@ A feature-rich text editor built with Python using the provided socket canvas AP
 
 ## Project Structure
 
-- `text_editor.py`: Main entry point and editor implementation
+- `main.py`: Main entry point and editor implementation
   - `TextEditorClient`: Handles socket communication
+  - `TextEditor`: Handles text editing
   - `TextBuffer`: Manages text content and cursor
   - `Renderer`: Renders text and UI to the canvas
   - `TextEditor`: Main controller coordinating all components
@@ -64,7 +65,7 @@ A feature-rich text editor built with Python using the provided socket canvas AP
 The editor is built on a client-server architecture where:
 
 1. The socket_canvas.py provides a Tkinter canvas accessible via TCP
-2. The text_editor.py connects to this canvas and uses it as a display
+2. The main.py connects to this canvas and uses it as a display
 
 All drawing is done via the three available commands:
 - Drawing rectangles for UI elements and cursor
