@@ -1,4 +1,4 @@
-# Canvas-based Applications Suite
+# The App Center
 
 This project is a suite of interactive applications built on top of a common socket-based canvas API. The applications range from productivity tools like a text editor and collaborative whiteboard to games and development tools.
 
